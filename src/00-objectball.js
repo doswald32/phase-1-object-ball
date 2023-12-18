@@ -116,4 +116,70 @@ function gameObject() {
   return game;
   }
   
-  console.log(gameObject());
+  function numPointsScored(name) {
+    let game = gameObject();
+    for (let sideKey in game) {
+        let playerObj = game[sideKey].players;
+        for (let playerKey in playerObj) {
+            if (playerKey === name) {
+                return playerObj[playerKey].points;
+            }
+        }
+    }
+  }
+
+  function shoeSize(name) {
+    let game = gameObject();
+    for (let sideKey in game) {
+        let playerObj = game[sideKey].players;
+        for (let playerKey in playerObj) {
+            if (playerKey === name) {
+                return playerObj[playerKey].shoe;
+            }
+        }
+    }
+  }
+
+  function teamColors(name) {
+    let game = gameObject();
+    for (let sideKey in game) {
+        if (sideKey.teamName === name) {
+            return sideKey.colors;
+        }
+    }
+  }
+
+  function teamNames() {
+    let game = gameObject();
+    let array = [];
+    for (let team in game) {
+        array.push(game[team].teamName);
+    }
+    return array;
+}
+
+function playerNumbers(name) {
+    let game = gameObject();
+    let numbers = [];
+    for (let sideKey in game) {
+        let playerObj = game[sideKey].players;
+        for (let playerKey in playerObj) {
+            if (game[sideKey].teamName === name) {
+            numbers.push(playerObj[playerKey].number);
+        }
+    }
+    }
+    return numbers;
+}
+
+function playerStats(name) {
+    let game = gameObject();
+    for (let sideKey in game) {
+        let playerObj = game[sideKey].players;
+        for (let playerKey in playerObj) {
+            if (playerKey === name) {
+                return playerObj[playerKey];
+            }
+        }
+    }
+}
